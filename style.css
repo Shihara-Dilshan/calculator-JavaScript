@@ -52,6 +52,15 @@ a:visited {
   font-size: 20px;
 }
 
+button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  font-size: larger;
+}
+
+button:active {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 .outPut {
   grid-column: 1/5;
   background-color: rgba(0, 0, 0, 0.7);

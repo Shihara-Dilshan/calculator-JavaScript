@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let savedNumber = "";
   let result = 0;
   let savedOperator = "";
+  let curretDisplayValue = "";
 
   data_number.forEach((number) => {
     number.addEventListener("click", (event) => {
@@ -29,13 +30,14 @@ document.addEventListener("DOMContentLoaded", () => {
   data_oparation.forEach((dataOprator) => {
     dataOprator.addEventListener("click", (event) => {
       if (operator === "") {
-        operator += event.target.textContent;
+        operator = event.target.textContent;
         savedNumber = currentNumber;
         savedOperator = operator;
-        currentNumber += " " + operator;
+        //currentNumber += " " + operator;
         current.textContent = 0;
         previuos.style.color = "white";
-        savedNumberWithOperator = currentNumber;
+        //savedNumberWithOperator = currentNumber;
+
         calculateResult(operator);
         previuos.textContent = negativeHandle(result) + " " + operator;
 
@@ -51,30 +53,44 @@ document.addEventListener("DOMContentLoaded", () => {
   function calculateResult(InputOperator) {
     switch (InputOperator) {
       case "+":
-        result += Number.parseFloat(savedNumber);
+        savedNumber != ""
+          ? (result += Number.parseFloat(savedNumber))
+          : console.log("?");
 
         break;
       case "-":
         if (result == 0) {
-          result = Number.parseFloat(savedNumber);
+          savedNumber != ""
+            ? (result = Number.parseFloat(savedNumber))
+            : console.log("?");
         } else {
-          result -= Number.parseFloat(savedNumber);
+          savedNumber != ""
+            ? (result -= Number.parseFloat(savedNumber))
+            : console.log("?");
         }
         break;
 
       case "*":
         if (result == 0) {
-          result = Number.parseFloat(savedNumber);
+          savedNumber != ""
+            ? (result = Number.parseFloat(savedNumber))
+            : console.log("?");
         } else {
-          result *= Number.parseFloat(savedNumber);
+          savedNumber != ""
+            ? (result *= Number.parseFloat(savedNumber))
+            : console.log("?");
         }
         break;
 
       case "/":
         if (result == 0) {
-          result = Number.parseFloat(savedNumber);
+          savedNumber != ""
+            ? (result = Number.parseFloat(savedNumber))
+            : console.log("?");
         } else {
-          result /= Number.parseFloat(savedNumber);
+          savedNumber != ""
+            ? (result /= Number.parseFloat(savedNumber))
+            : console.log("?");
         }
         break;
 
@@ -124,5 +140,15 @@ document.addEventListener("DOMContentLoaded", () => {
     current.textContent = ".";
     previuos.style.color = "transparent";
     current.style.color = "transparent";
+  });
+
+  //delete on by one
+  DEL.addEventListener("click", () => {
+    currentNumber = currentNumber.substring(0, currentNumber.length - 1);
+    current.textContent = currentNumber;
+    if (currentNumber === "") {
+      current.textContent = ".";
+      current.style.color = "transparent";
+    }
   });
 });
