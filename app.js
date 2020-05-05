@@ -1,3 +1,1 @@
-document.addEventListener("DOMContentLoaded", () => {
-  alert("ss");
-});
+document.addEventListener("DOMContentLoaded", () => {});
