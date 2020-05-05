@@ -60,6 +60,13 @@ a:visited {
   font-size: 4vh;
 }
 
+.previous {
+  padding-bottom: 1em;
+  font-size: 20px;
+}
+
+.new {
+}
 .AC {
   grid-column: 1/3;
 }
