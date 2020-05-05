@@ -11,9 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let operator = "";
   let savedNumberWithOperator = "";
   let savedNumber = "";
+  let result = 0;
 
   data_number.forEach((number) => {
     number.addEventListener("click", (event) => {
+      current.style.color = "white";
       count++;
       if (count <= 9 && operator == "") {
         currentNumber += event.target.textContent;
@@ -32,11 +34,37 @@ document.addEventListener("DOMContentLoaded", () => {
         current.textContent = 0;
         previuos.style.color = "white";
         savedNumberWithOperator = currentNumber;
-        previuos.textContent = savedNumberWithOperator;
+        calculateResult(operator);
+        previuos.textContent = result + " " + operator;
+
         currentNumber = "";
         count = 0;
         operator = "";
       }
     });
   });
+
+  //calcualate the results
+  function calculateResult(InputOperator) {
+    switch (InputOperator) {
+      case "+":
+        result += Number.parseInt(savedNumber);
+        console.log(result);
+        break;
+      case "-":
+        result -= Number.parseInt(savedNumber);
+        console.log(result);
+        break;
+      case "*":
+        result *= Number.parseInt(savedNumber);
+        console.log(result);
+        break;
+      case "/":
+        result /= Number.parseInt(savedNumber);
+        console.log(result);
+        break;
+      default:
+        break;
+    }
+  }
 });
